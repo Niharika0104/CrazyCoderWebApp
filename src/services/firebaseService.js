@@ -4,6 +4,7 @@ import {
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
     signInWithPopup,
+    sendPasswordResetEmail
 } from 'firebase/auth';
 import {
     getFirestore,
@@ -186,6 +187,27 @@ const signInWithGoogle = async () => {
     } catch (err) {}
 };
 
+const resetPasswordEmail=async (email)=>{
+    return await sendPasswordResetEmail(auth, email)
+    .then((value) => {
+       console.log(value);
+    })
+    .catch((error) => {
+        throw error;
+    });
+}
+const isEmailExists = async (email) => {
+    try {
+        const q = query(collection(db, 'users'), where('email', '==', email));
+        const users = await getDocs(q);
+       console.log(users)
+       
+        return users.length>0?true:false;
+    } catch (err) {
+        throw err;
+    }
+};
+
 export {
     logInWithEmailAndPassword,
     signUpWithEmailAndPass,
@@ -195,6 +217,8 @@ export {
     getDocumentFromFireStore,
     getMultipleDocsFromFirestore,
     getChatsFromFireStore,
+    resetPasswordEmail,
+    isEmailExists,
     updateDocField,
     sendMessage,
     chatListener,

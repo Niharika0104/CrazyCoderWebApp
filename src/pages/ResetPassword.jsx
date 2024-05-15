@@ -6,6 +6,8 @@ import {
     signInWithGoogle,
     getDocumentFromFireStore,
     isUsernameExist,
+
+    resetPasswordEmail,
     setDocumentInFirestore,
 } from '../services/firebaseService';
 import { login } from '../store/authSlice';
@@ -31,14 +33,10 @@ function SignInForm() {
         try {
             const { email } = data;
             if (!email ) {
-                throw new Error('Invalid Email, password');
+                throw new Error('Invalid Email');
             }
-            const cUser = await logInWithEmailAndPassword(email, password);
-            if (cUser) {
-                setUserSession(cUser.uid);
-            } else {
-                throw new Error(`User with email ${email} does not exist. please signup.`);
-            }
+            const cUser = await resetPasswordEmail(email);
+            
         } catch (err) {
             console.log(err);
             throw err;
