@@ -10,6 +10,7 @@ import LeaderBoard from './pages/LeaderBoard.jsx';
 import SignUpForm from './pages/SignUpForm.jsx';
 import SignInForm from './pages/SignInForm.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
+import ResetPassword from './pages/ResetPassword.jsx';
 import Logout from './pages/Logout.jsx'
 import Chat from './components/Chat.jsx';
 import Profile from './pages/Profile.jsx';
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element: <SignUpForm />,
             },
+            {
+                path: '/resetpassword',
+                element: <ResetPassword />,
+            },
+            ,
             {
                 path: '/login',
                 element: <SignInForm />,
