@@ -29,9 +29,9 @@ function SignInForm() {
 
     const handleForm = async (data) => {
         try {
-            const { email, password } = data;
-            if (!email || !password) {
-                throw new Error('Ivalid Email, password');
+            const { email } = data;
+            if (!email ) {
+                throw new Error('Invalid Email, password');
             }
             const cUser = await logInWithEmailAndPassword(email, password);
             if (cUser) {
