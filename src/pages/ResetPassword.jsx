@@ -17,7 +17,7 @@ function SignInForm() {
     const fields = [
         {
             label: 'Email',
-            type: 'reset',
+            type: 'email',
             placeholder: 'crazy@coder.com',
             field: 'email',
         }

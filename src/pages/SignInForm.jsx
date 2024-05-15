@@ -37,7 +37,7 @@ function SignInForm() {
         try {
             const { email, password } = data;
             if (!email || !password) {
-                throw new Error('Ivalid Email, password');
+                throw new Error('Invalid Email, password');
             }
             const cUser = await logInWithEmailAndPassword(email, password);
             if (cUser) {
